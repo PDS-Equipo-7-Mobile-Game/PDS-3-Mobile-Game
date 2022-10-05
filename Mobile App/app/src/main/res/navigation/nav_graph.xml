@@ -6,7 +6,16 @@
     app:startDestination="@id/userLoginFragment">
     <fragment
         android:id="@+id/userLoginFragment"
-        android:name="com.example.battleship.UserLoginFragment"
+        android:name="com.example.battleship.ui.view.users.UserLoginFragment"
         android:label="fragment_user_login"
-        tools:layout="@layout/fragment_user_login" />
+        tools:layout="@layout/fragment_user_login" >
+        <action
+            android:id="@+id/action_userLoginFragment_to_createNewAccountFragment"
+            app:destination="@id/createNewAccountFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/createNewAccountFragment"
+        android:name="com.example.battleship.ui.view.users.CreateNewAccountFragment"
+        android:label="fragment_create_new_account"
+        tools:layout="@layout/fragment_create_new_account" />
 </navigation>
