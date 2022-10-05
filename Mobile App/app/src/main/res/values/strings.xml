@@ -2,4 +2,11 @@
     <string name="app_name">BattleShip</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="required">requerido*</string>
+    <string name="battleship">BattleShip</string>
+    <string name="create_new_account">Crear nueva cuenta</string>
+    <string name="dont_u_have_an_account">¿No Ttenes una cuenta?</string>
+    <string name="LogIn">Iniciar Sesión</string>
 </resources>
