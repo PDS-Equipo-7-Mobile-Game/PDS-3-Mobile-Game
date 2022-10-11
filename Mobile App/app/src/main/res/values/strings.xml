@@ -9,4 +9,6 @@
     <string name="create_new_account">Crear nueva cuenta</string>
     <string name="dont_u_have_an_account">¿No Ttenes una cuenta?</string>
     <string name="LogIn">Iniciar Sesión</string>
+    <string name="name">Nombre</string>
+    <string name="password_required_and_conditions">requerido* (mínimo 6 caracteres)</string>
 </resources>

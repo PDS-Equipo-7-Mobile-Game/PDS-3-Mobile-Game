@@ -17,5 +17,9 @@
         android:id="@+id/createNewAccountFragment"
         android:name="com.example.battleship.ui.view.users.CreateNewAccountFragment"
         android:label="fragment_create_new_account"
-        tools:layout="@layout/fragment_create_new_account" />
+        tools:layout="@layout/fragment_create_new_account" >
+        <action
+            android:id="@+id/action_createNewAccountFragment_to_userLoginFragment"
+            app:destination="@id/userLoginFragment" />
+    </fragment>
 </navigation>
