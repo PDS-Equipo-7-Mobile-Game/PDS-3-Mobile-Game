@@ -10,6 +10,8 @@ import android.widget.Toast
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.Navigation
 import com.example.battleship.R
+import com.example.battleship.data.api.RetrofitInstance
+import com.example.battleship.data.models.PlayerRegister
 import com.example.battleship.ui.viewmodel.users.UserViewModel
 import com.google.android.material.textfield.TextInputEditText
 import kotlinx.coroutines.runBlocking
@@ -28,9 +30,7 @@ class CreateNewAccountFragment : Fragment() {
         // Inflate the layout for this fragment
         var view = inflater.inflate(R.layout.fragment_create_new_account, container, false)
 
-        var email = view.findViewById<TextInputEditText>(R.id.login_emailTetxInputEditText).text
-        var name = view.findViewById<TextInputEditText>(R.id.new_acc_nameTextInputEditText).text
-        var password = view.findViewById<TextInputEditText>(R.id.login_passwordTextInputEditText).text
+
 
         var new_acc_button = view.findViewById<Button>(R.id.new_acc_button)
 
@@ -38,12 +38,26 @@ class CreateNewAccountFragment : Fragment() {
             runBlocking {
 //                val call = RetrofitInstance.api.getTodos()
 //                Log.d("BODY!", call.body().toString())
+                var email = view.findViewById<TextInputEditText>(R.id.login_emailTetxInputEditText).text
+                var name = view.findViewById<TextInputEditText>(R.id.new_acc_nameTextInputEditText).text
+                var password = view.findViewById<TextInputEditText>(R.id.login_passwordTextInputEditText).text
+
                 var emailAddressValidation = userViewModel.validateEmailAddress(email.toString())
                 var passSecurityValidation = userViewModel.validatePassSecurity(password.toString())
                 var namePresenceValidation = name.toString().isNotEmpty()
 
                 if (emailAddressValidation && passSecurityValidation && namePresenceValidation){
-                    Navigation.findNavController(it).navigate(R.id.action_createNewAccountFragment_to_userLoginFragment)
+                    val register_response = RetrofitInstance.api.register(PlayerRegister(name.toString(), email.toString(), password.toString()))
+
+                    if (register_response.isSuccessful){
+                        Toast.makeText(
+                            activity,
+                            "La cuenta ha sido creada con exito!",
+                            Toast.LENGTH_SHORT
+                        ).show();
+                        Navigation.findNavController(it).navigate(R.id.action_createNewAccountFragment_to_userLoginFragment)
+                    }
+
                 }else if (!passSecurityValidation) {
                     Toast.makeText(
                         activity,
