@@ -23,4 +23,12 @@ interface BattleShiApi {
 
     @GET("/players")
     suspend fun getPlayers(): Response<List<Player>>
+
+    @GET("/player/{player_id}")
+    suspend fun getPlayer(@Path("player_id") player_id: Int): Response<Player>
+
+    @PATCH("/player/{player_id}/update")
+    suspend fun updatePlayer(@Path("player_id") player_id: Int, @Body player: Player): Response<Player>
+
+
 }

@@ -1,25 +1,31 @@
 package com.example.battleship.ui.view.users
 
+import android.app.NotificationChannel
+import android.app.NotificationManager
+import android.app.NotificationManager.IMPORTANCE_DEFAULT
+import android.content.Context
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
+import androidx.core.app.NotificationCompat
+import androidx.core.app.NotificationManagerCompat
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.Navigation
 import com.example.battleship.R
 import com.example.battleship.data.api.RetrofitInstance
 import com.example.battleship.data.models.Credential
-import com.google.android.material.textfield.TextInputEditText
-import kotlinx.coroutines.runBlocking
 import com.example.battleship.data.models.Friend
 import com.example.battleship.data.models.Player
-import com.example.battleship.data.models.PlayerRegister
 import com.example.battleship.databinding.ActivityMainBinding
 import com.example.battleship.ui.viewmodel.users.UserViewModel
+import com.google.android.material.textfield.TextInputEditText
+import kotlinx.coroutines.runBlocking
 
 
 class UserLoginFragment : Fragment() {
@@ -48,7 +54,9 @@ class UserLoginFragment : Fragment() {
 
             runBlocking {
 
-
+                //                    Update player
+//                    var response_players = RetrofitInstance.api.updatePlayer(2,Player("Test",null,null,null,null,null,null,null,null,null)).body().toString()
+//                    Log.d("Player:", response_players)
 
                 var response = RetrofitInstance.api.login(Credential(login_email, login_pass))
 
@@ -57,10 +65,9 @@ class UserLoginFragment : Fragment() {
                     Log.d("RESPONSE:", response.body().toString())
 
                     //                POST Players hay 3 status "accepted" cuando son amigos, "pending" cuando no ha aceptado a solicitud aun y "rejected".
-                    var friends_request = RetrofitInstance.api.getFriends(2, "accepted")
-                    Log.d("Friends", friends_request.body().toString())
-                    userViewModel.friends = friends_request.body() as MutableList<Player>
-
+//                    var friends_request = RetrofitInstance.api.getFriends(2, "accepted")
+//                    Log.d("Friends", friends_request.body().toString())
+//                    userViewModel.friends = friends_request.body() as MutableList<Player>
 
 //                    POST register
 //                    var response = RetrofitInstance.api.register(PlayerRegister("Matí Bustos", "mibustos2@miuandes.cl", "1234"))
@@ -84,4 +91,12 @@ class UserLoginFragment : Fragment() {
         // Inflate the layout for this fragment
         return view
     }
+
+
+
+
+
+
+
+
 }
