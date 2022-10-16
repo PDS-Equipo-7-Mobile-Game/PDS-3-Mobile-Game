@@ -65,9 +65,9 @@ class UserLoginFragment : Fragment() {
                     Log.d("RESPONSE:", response.body().toString())
 
                     //                POST Players hay 3 status "accepted" cuando son amigos, "pending" cuando no ha aceptado a solicitud aun y "rejected".
-//                    var friends_request = RetrofitInstance.api.getFriends(2, "accepted")
-//                    Log.d("Friends", friends_request.body().toString())
-//                    userViewModel.friends = friends_request.body() as MutableList<Player>
+                    var friends_request = RetrofitInstance.api.getFriends(2, "accepted")
+                    Log.d("Friends", friends_request.body().toString())
+                    userViewModel.friends = friends_request.body() as MutableList<Player>
 
 //                    POST register
 //                    var response = RetrofitInstance.api.register(PlayerRegister("Matí Bustos", "mibustos2@miuandes.cl", "1234"))

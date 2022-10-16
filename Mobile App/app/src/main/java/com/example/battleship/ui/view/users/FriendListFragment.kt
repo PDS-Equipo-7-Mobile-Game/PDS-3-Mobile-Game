@@ -1,6 +1,7 @@
 package com.example.battleship.ui.view.users
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,6 +14,7 @@ import com.example.battleship.data.models.Friend
 import com.example.battleship.data.models.Player
 import com.example.battleship.databinding.FragmentFriendListBinding
 import com.example.battleship.ui.viewmodel.users.UserViewModel
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class FriendListFragment : Fragment() {
 
@@ -25,6 +27,12 @@ class FriendListFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentFriendListBinding.inflate(layoutInflater)
+
+        var bottom_nav = requireActivity().findViewById<BottomNavigationView>(R.id.bottomNavigationView)
+        Log.d("Is null? : ", bottom_nav.toString())
+        Log.d("Is null? : ", bottom_nav.visibility.toString())
+        bottom_nav.visibility = View.VISIBLE
+
         val context = context as MainActivity
         /*
         val imageId = intArrayOf(
