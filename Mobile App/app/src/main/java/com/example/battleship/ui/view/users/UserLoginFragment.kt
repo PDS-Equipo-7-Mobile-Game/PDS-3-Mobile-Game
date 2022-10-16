@@ -41,19 +41,30 @@ class UserLoginFragment : Fragment() {
             var login_pass = view.findViewById<TextInputEditText>(R.id.login_passwordTextInputEditText).text.toString()
 
             runBlocking {
-                
+
+//                POST Players hay 3 status "accepted" cuando son amigos, "pending" cuando no ha aceptado a solicitud aun y "rejected".
+//                var friends_request = RetrofitInstance.api.getFriends(2, "accepted")
+//                Log.d("Friends", friends_request.body().toString())
+
                 var response = RetrofitInstance.api.login(Credential(login_email, login_pass))
 
                 if (response.body()?.email?.isNotEmpty() == true){ //LogIn OK
                     Log.d("Logged In", true.toString())
+                    Log.d("RESPONSE:", response.body().toString())
+
+
+//                    GET Players
+//                    var response_players = RetrofitInstance.api.getPlayers().body().toString()
+//                    Log.d("Players:", response_players)
+
                     Navigation.findNavController(it).navigate(R.id.action_userLoginFragment_to_FriendListFragment)
+
 
                 }
 
                 else{  //Log failed
                     Log.d("Log failed", false.toString())
                 }
-                Log.d("RESPONSE:", response.body().toString())
             }
         }
 
