@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.Navigation
 import com.example.battleship.R
 import com.example.battleship.data.api.RetrofitInstance
@@ -18,12 +19,15 @@ import com.example.battleship.data.models.Friend
 import com.example.battleship.data.models.Player
 import com.example.battleship.data.models.PlayerRegister
 import com.example.battleship.databinding.ActivityMainBinding
+import com.example.battleship.ui.viewmodel.users.UserViewModel
 
 
 class UserLoginFragment : Fragment() {
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var friendArrayList : ArrayList<Friend>
+
+    private val userViewModel: UserViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -44,15 +48,18 @@ class UserLoginFragment : Fragment() {
 
             runBlocking {
 
-//                POST Players hay 3 status "accepted" cuando son amigos, "pending" cuando no ha aceptado a solicitud aun y "rejected".
-//                var friends_request = RetrofitInstance.api.getFriends(2, "accepted")
-//                Log.d("Friends", friends_request.body().toString())
+
 
                 var response = RetrofitInstance.api.login(Credential(login_email, login_pass))
 
                 if (response.body()?.email?.isNotEmpty() == true){ //LogIn OK
                     Log.d("Logged In", true.toString())
                     Log.d("RESPONSE:", response.body().toString())
+
+                    //                POST Players hay 3 status "accepted" cuando son amigos, "pending" cuando no ha aceptado a solicitud aun y "rejected".
+                    var friends_request = RetrofitInstance.api.getFriends(2, "accepted")
+                    Log.d("Friends", friends_request.body().toString())
+                    userViewModel.friends = friends_request.body() as MutableList<Player>
 
 
 //                    POST register
