@@ -15,6 +15,8 @@ import com.example.battleship.data.models.Credential
 import com.google.android.material.textfield.TextInputEditText
 import kotlinx.coroutines.runBlocking
 import com.example.battleship.data.models.Friend
+import com.example.battleship.data.models.Player
+import com.example.battleship.data.models.PlayerRegister
 import com.example.battleship.databinding.ActivityMainBinding
 
 
@@ -52,6 +54,10 @@ class UserLoginFragment : Fragment() {
                     Log.d("Logged In", true.toString())
                     Log.d("RESPONSE:", response.body().toString())
 
+
+//                    POST register
+//                    var response = RetrofitInstance.api.register(PlayerRegister("Matí Bustos", "mibustos2@miuandes.cl", "1234"))
+//                    Log.d("Create new user: ", response.body().toString())
 
 //                    GET Players
 //                    var response_players = RetrofitInstance.api.getPlayers().body().toString()
