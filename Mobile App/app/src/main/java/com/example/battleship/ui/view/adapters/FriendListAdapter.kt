@@ -9,8 +9,9 @@ import android.widget.ImageView
 import android.widget.TextView
 import com.example.battleship.R
 import com.example.battleship.data.models.Friend
+import com.example.battleship.data.models.Player
 
-class FriendListAdapter(private val context : Activity , private val arrayList : ArrayList<Friend>) : ArrayAdapter<Friend>(context,
+class FriendListAdapter(private val context : Activity , private val arrayList : ArrayList<Player>) : ArrayAdapter<Player>(context,
     R.layout.friends_in_list, arrayList) {
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
@@ -21,7 +22,7 @@ class FriendListAdapter(private val context : Activity , private val arrayList :
         val imageView : ImageView = view.findViewById(R.id.profile_pic)
         val friendName : TextView = view.findViewById(R.id.friendName)
 
-        imageView.setImageResource(arrayList[position].imageId)
+        //imageView.setImageResource(arrayList[position].imageId)
         friendName.text = arrayList[position].name
 
         return view
