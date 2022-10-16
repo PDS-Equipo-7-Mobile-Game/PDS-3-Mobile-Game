@@ -2,6 +2,7 @@ package com.example.battleship.ui.viewmodel.users
 
 import android.app.Activity
 import android.app.Application
+import android.util.Log
 import android.util.Patterns
 import android.widget.Toast
 import androidx.lifecycle.AndroidViewModel
@@ -21,6 +22,8 @@ class UserViewModel(application: Application): AndroidViewModel(application) {
     }
 
     fun validatePassSecurity(password: String): Boolean{
+        Log.d("Pass:", password)
+        Log.d("Size pass: ", password.length.toString())
         return password.length >= 6
     }
 }
