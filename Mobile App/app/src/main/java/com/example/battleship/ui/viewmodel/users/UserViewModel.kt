@@ -13,7 +13,6 @@ class UserViewModel(application: Application): AndroidViewModel(application) {
     var users: MutableList<Player> = mutableListOf<Player>()
 
     fun createUser(email: String, password: String, name: String){
-        users.add(Player(name, email, password))
     }
 
     fun validateEmailAddress(email: String): Boolean{

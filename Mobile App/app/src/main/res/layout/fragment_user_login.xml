@@ -28,7 +28,7 @@
             app:startIconDrawable="@drawable/ic_baseline_email_24">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/new_acc_emailTetxInputEditText"
+                android:id="@+id/login_emailTetxInputEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textEmailAddress">
@@ -54,7 +54,7 @@
             app:startIconDrawable="@drawable/ic_baseline_lock_24">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/new_acc_passwordTextInputEditText"
+                android:id="@+id/login_passwordTextInputEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPassword">
@@ -75,7 +75,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/logInButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
@@ -91,7 +91,7 @@
             android:layout_marginTop="16dp"
             android:text="@string/dont_u_have_an_account"
             app:layout_constraintStart_toStartOf="@+id/textInputLayout2"
-            app:layout_constraintTop_toBottomOf="@+id/button" />
+            app:layout_constraintTop_toBottomOf="@+id/logInButton" />
 
         <TextView
             android:id="@+id/new_account_textView"

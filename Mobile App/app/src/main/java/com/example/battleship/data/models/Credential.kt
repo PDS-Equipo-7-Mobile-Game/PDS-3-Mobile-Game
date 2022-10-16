@@ -1,7 +1,6 @@
 package com.example.battleship.data.models
 
-class Player(
-    var name: String,
+data class Credential (
     var email: String,
     var password: String
 )

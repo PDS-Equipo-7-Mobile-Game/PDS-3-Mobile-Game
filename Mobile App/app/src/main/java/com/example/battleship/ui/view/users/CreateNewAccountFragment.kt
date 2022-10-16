@@ -1,7 +1,6 @@
 package com.example.battleship.ui.view.users
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -11,7 +10,6 @@ import android.widget.Toast
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.Navigation
 import com.example.battleship.R
-import com.example.battleship.data.api.RetrofitInstance
 import com.example.battleship.ui.viewmodel.users.UserViewModel
 import com.google.android.material.textfield.TextInputEditText
 import kotlinx.coroutines.runBlocking
@@ -30,9 +28,9 @@ class CreateNewAccountFragment : Fragment() {
         // Inflate the layout for this fragment
         var view = inflater.inflate(R.layout.fragment_create_new_account, container, false)
 
-        var email = view.findViewById<TextInputEditText>(R.id.new_acc_emailTetxInputEditText).text
+        var email = view.findViewById<TextInputEditText>(R.id.login_emailTetxInputEditText).text
         var name = view.findViewById<TextInputEditText>(R.id.new_acc_nameTextInputEditText).text
-        var password = view.findViewById<TextInputEditText>(R.id.new_acc_passwordTextInputEditText).text
+        var password = view.findViewById<TextInputEditText>(R.id.login_passwordTextInputEditText).text
 
         var new_acc_button = view.findViewById<Button>(R.id.new_acc_button)
 
