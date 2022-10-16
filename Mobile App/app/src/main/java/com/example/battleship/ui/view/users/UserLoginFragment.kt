@@ -14,9 +14,15 @@ import com.example.battleship.data.api.RetrofitInstance
 import com.example.battleship.data.models.Credential
 import com.google.android.material.textfield.TextInputEditText
 import kotlinx.coroutines.runBlocking
+import com.example.battleship.data.models.Friend
+import com.example.battleship.databinding.ActivityMainBinding
 
 
 class UserLoginFragment : Fragment() {
+
+    private lateinit var binding: ActivityMainBinding
+    private lateinit var friendArrayList : ArrayList<Friend>
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -40,6 +46,8 @@ class UserLoginFragment : Fragment() {
 
                 if (response.body()?.email?.isNotEmpty() == true){ //LogIn OK
                     Log.d("Logged In", true.toString())
+                    Navigation.findNavController(it).navigate(R.id.action_userLoginFragment_to_FriendListFragment)
+
                 }
 
                 else{  //Log failed
@@ -48,8 +56,6 @@ class UserLoginFragment : Fragment() {
                 Log.d("RESPONSE:", response.body().toString())
             }
         }
-
-
 
         // Inflate the layout for this fragment
         return view
