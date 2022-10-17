@@ -33,6 +33,9 @@
         <action
             android:id="@+id/action_FriendListFragment_to_addFriendsFragment"
             app:destination="@id/addFriendsFragment" />
+        <action
+            android:id="@+id/action_FriendListFragment_to_showFriendProfileFragment"
+            app:destination="@id/showFriendProfileFragment" />
     </fragment>
     <fragment
         android:id="@+id/profileFragment"
@@ -44,4 +47,8 @@
         android:name="com.example.battleship.ui.view.users.AddFriendsFragment"
         android:label="fragment_add_friends"
         tools:layout="@layout/fragment_add_friends" />
+    <fragment
+        android:id="@+id/showFriendProfileFragment"
+        android:name="com.example.battleship.ui.view.users.ShowFriendProfileFragment"
+        android:label="ShowFriendProfileFragment" />
 </navigation>

@@ -69,7 +69,7 @@ class FriendListFragment : Fragment() {
         }
         */
         binding.friendlistview.isClickable = true
-        binding.friendlistview.adapter = FriendListAdapter(context, friendArrayList, userViewModel)
+        binding.friendlistview.adapter = FriendListAdapter(context, friendArrayList, userViewModel, requireActivity().supportFragmentManager)
 
         return binding.root
     }

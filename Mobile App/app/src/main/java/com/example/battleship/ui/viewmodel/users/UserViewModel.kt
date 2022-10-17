@@ -15,6 +15,7 @@ class UserViewModel(application: Application): AndroidViewModel(application) {
     var players_in_app = mutableListOf<Player>()
     var pending_friends = mutableListOf<Player>()
     var self_user : Player? = null
+    var friendToShow: Player? = null
     var users: MutableList<Player> = mutableListOf<Player>()
 
     fun createUser(email: String, password: String, name: String){

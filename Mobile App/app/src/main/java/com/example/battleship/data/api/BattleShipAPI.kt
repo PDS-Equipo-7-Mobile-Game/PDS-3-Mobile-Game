@@ -5,6 +5,8 @@ import retrofit2.Response
 import retrofit2.http.*
 
 interface BattleShiApi {
+
+    // User Management
     @Headers("Content-Type: application/json")
     @POST("/players/login")
     suspend fun login(@Body credentials:Credential): Response<Player>
@@ -15,6 +17,9 @@ interface BattleShiApi {
     suspend fun register(@Body player_register: PlayerRegister): Response<Player>
 
 
+
+
+    //Players
     @Headers("Content-Type: application/json")
     @POST("players/{player_id}/friends")
     suspend fun getFriends(@Path("player_id") player_id: Int, @Query("status") status: String ): Response<List<Player>>
