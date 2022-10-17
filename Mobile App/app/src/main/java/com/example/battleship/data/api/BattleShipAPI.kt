@@ -1,6 +1,7 @@
 package com.example.battleship.data.api
 
 import com.example.battleship.data.models.Credential
+import com.example.battleship.data.models.FriendRequest
 import com.example.battleship.data.models.Player
 import com.example.battleship.data.models.PlayerRegister
 import retrofit2.Response
@@ -30,5 +31,7 @@ interface BattleShiApi {
     @PATCH("/player/{player_id}/update")
     suspend fun updatePlayer(@Path("player_id") player_id: Int, @Body player: Player): Response<Player>
 
+    @POST("/friend_request/new")
+    suspend fun addFriend(@Body friend_request : FriendRequest)
 
 }

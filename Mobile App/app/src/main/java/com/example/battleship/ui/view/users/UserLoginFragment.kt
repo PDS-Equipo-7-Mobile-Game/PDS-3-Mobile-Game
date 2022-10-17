@@ -63,19 +63,14 @@ class UserLoginFragment : Fragment() {
                 if (response.body()?.email?.isNotEmpty() == true){ //LogIn OK
                     Log.d("Logged In", true.toString())
                     Log.d("RESPONSE:", response.body().toString())
+                    userViewModel.self_user = response.body()
 
-                    //                POST Players hay 3 status "accepted" cuando son amigos, "pending" cuando no ha aceptado a solicitud aun y "rejected".
-                    var friends_request = RetrofitInstance.api.getFriends(2, "accepted")
+                    //POST Players hay 3 status "accepted" cuando son amigos, "pending" cuando no ha aceptado a solicitud aun y "rejected".
+                    var friends_request = RetrofitInstance.api.getFriends(userViewModel.self_user!!.id!!.toInt(), "accepted")
                     Log.d("Friends", friends_request.body().toString())
                     userViewModel.friends = friends_request.body() as MutableList<Player>
-
-                    var pending_friends = RetrofitInstance.api.getFriends(2, "pending")
-
-                    for (i in pending_friends.body()!!){
-                        userViewModel.pending_friends.add(i)
-                    }
-
-                    userViewModel.self_user = response.body()
+                    var pending_friends = RetrofitInstance.api.getFriends(userViewModel.self_user!!.id!!.toInt(), "pending")
+                    userViewModel.pending_friends = pending_friends.body() as MutableList<Player>
 //                    POST register
 //                    var response = RetrofitInstance.api.register(PlayerRegister("Matí Bustos", "mibustos2@miuandes.cl", "1234"))
 //                    Log.d("Create new user: ", response.body().toString())
@@ -83,10 +78,11 @@ class UserLoginFragment : Fragment() {
 //                    GET Players
 //                    var response_players = RetrofitInstance.api.getPlayers().body().toString()
 //                    Log.d("Players:", response_players)
+                    var get_players = RetrofitInstance.api.getPlayers()
+                    userViewModel.players_in_app = get_players.body() as MutableList<Player>
 
                     Navigation.findNavController(it).navigate(R.id.action_userLoginFragment_to_profileFragment)
-
-
+                    
                 }
 
                 else{  //Log failed

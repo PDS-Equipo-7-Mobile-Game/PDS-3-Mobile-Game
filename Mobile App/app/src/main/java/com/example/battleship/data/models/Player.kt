@@ -4,6 +4,7 @@ data class Player(
     var name: String?,
     var email: String?,
     var auth_key: String?,
+    var id: Integer?,
     var n_win_games: Integer?,
     var n_lose_games: Integer?,
     var n_played_games: Integer?,

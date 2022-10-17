@@ -12,6 +12,7 @@ import kotlinx.coroutines.runBlocking
 
 class UserViewModel(application: Application): AndroidViewModel(application) {
     var friends = mutableListOf<Player>()
+    var players_in_app = mutableListOf<Player>()
     var pending_friends = mutableListOf<Player>()
     var self_user : Player? = null
     var users: MutableList<Player> = mutableListOf<Player>()

@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.Navigation
 import com.example.battleship.ui.view.adapters.FriendListAdapter
 import com.example.battleship.MainActivity
 import com.example.battleship.R
@@ -37,29 +38,38 @@ class FriendListFragment : Fragment() {
 
         )
         */
-
         var view = inflater.inflate(R.layout.friends_in_list, container, false)
         var button = view.findViewById<Button>(R.id.addButton)
+        var addFriendButton = binding.root.findViewById<Button>(R.id.addfriend_button)
+        var pendingButton = binding.root.findViewById<Button>(R.id.pendingButton)
 
+        addFriendButton.setOnClickListener {
+            requireActivity().supportFragmentManager.beginTransaction().replace(R.id.nav_host_fragment, AddFriendsFragment()).commit()
+        }
 
+        pendingButton.setOnClickListener {
+            requireActivity().supportFragmentManager.beginTransaction().replace(R.id.nav_host_fragment, PendingFriendsFragment()).commit()
+        }
         friendArrayList = ArrayList()
 
         for ( i in userViewModel.friends){
 
-            button.visibility = View.INVISIBLE
+            //button.visibility = View.INVISIBLE
 
-            val friend = Player(i.name, i.email, i.auth_key, i.n_win_games, i.n_lose_games, i.n_played_games,
+            val friend = Player(i.name, i.email, i.auth_key, i.id, i.n_win_games, i.n_lose_games, i.n_played_games,
                                 i.n_bonifications, i.n_effectiveness, i.turns_mean_of_games, i.mean_of_misses_by_game)
             friendArrayList.add(friend)
 
         }
 
+
+        /*
         for (i in userViewModel.pending_friends){
             button.visibility = View.INVISIBLE
         }
-
+        */
         binding.friendlistview.isClickable = true
-        binding.friendlistview.adapter = FriendListAdapter(context, friendArrayList)
+        binding.friendlistview.adapter = FriendListAdapter(context, friendArrayList, userViewModel)
 
         return binding.root
     }

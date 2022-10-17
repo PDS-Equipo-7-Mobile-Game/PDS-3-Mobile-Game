@@ -29,10 +29,19 @@
         android:id="@+id/FriendListFragment"
         android:name="com.example.battleship.ui.view.users.FriendListFragment"
         android:label="fragment_user_profile"
-        tools:layout="@layout/fragment_friend_list" />
+        tools:layout="@layout/fragment_friend_list" >
+        <action
+            android:id="@+id/action_FriendListFragment_to_addFriendsFragment"
+            app:destination="@id/addFriendsFragment" />
+    </fragment>
     <fragment
         android:id="@+id/profileFragment"
         android:name="com.example.battleship.ui.view.users.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/addFriendsFragment"
+        android:name="com.example.battleship.ui.view.users.AddFriendsFragment"
+        android:label="fragment_add_friends"
+        tools:layout="@layout/fragment_add_friends" />
 </navigation>

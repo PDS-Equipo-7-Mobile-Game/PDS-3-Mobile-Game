@@ -8,13 +8,66 @@
     tools:context=".ui.view.users.FriendListFragment"
     >
 
-    <ListView
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/friendlistview"
-        tools:listitem="@layout/friends_in_list"
-        >
+        android:layout_height="wrap_content">
 
-    </ListView>
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline2"
+            app:layout_constraintGuide_percent="0.08"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
 
+        </androidx.constraintlayout.widget.Guideline>
+
+        <Button
+            android:id="@+id/addfriend_button"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:text="+"
+            android:textSize="30dp"
+            android:backgroundTint="#056ee6"
+            android:layout_marginStart="10dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+        </Button>
+
+        <ListView
+            android:id="@+id/friendlistview"
+            android:layout_width="410dp"
+            android:layout_height="683dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/guideline2"
+            tools:listitem="@layout/friends_in_list">
+
+        </ListView>
+
+        <Button
+            android:id="@+id/pendingButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            android:backgroundTint="#056ee6"
+            android:text="Pending"
+            app:layout_constraintBottom_toTopOf="@+id/friendlistview"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/friendListTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Lista de Amigos"
+            android:textColor="@color/white"
+            android:textSize="30dp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/friendlistview"
+            app:layout_constraintEnd_toStartOf="@+id/pendingButton"
+            app:layout_constraintStart_toEndOf="@+id/addfriend_button"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

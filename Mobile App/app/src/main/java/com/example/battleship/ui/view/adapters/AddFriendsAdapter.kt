@@ -9,12 +9,16 @@ import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.lifecycle.ViewModel
 import com.example.battleship.R
+import com.example.battleship.data.api.RetrofitInstance
 import com.example.battleship.data.models.Friend
+import com.example.battleship.data.models.FriendRequest
 import com.example.battleship.data.models.Player
 import com.example.battleship.ui.viewmodel.users.UserViewModel
+import kotlinx.coroutines.runBlocking
 
-class FriendListAdapter(private val context : Activity , private val arrayList : ArrayList<Player>, private val userVM : UserViewModel) : ArrayAdapter<Player>(context,
+class AddFriendsAdapter(private val context : Activity , private val arrayList : ArrayList<Player>, private val userVM : UserViewModel) : ArrayAdapter<Player>(context,
     R.layout.friends_in_list, arrayList) {
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
@@ -23,12 +27,19 @@ class FriendListAdapter(private val context : Activity , private val arrayList :
         val view : View = inflater.inflate(R.layout.friends_in_list, null)
 
         val imageView : ImageView = view.findViewById(R.id.profile_pic)
-        val friendName : TextView = view.findViewById(R.id.friendName)
+        val playerName : TextView = view.findViewById(R.id.friendName)
         val addFriend : Button = view.findViewById(R.id.addButton)
 
-
         //imageView.setImageResource(arrayList[position].imageId)
-        friendName.text = arrayList[position].name
+        addFriend.setOnClickListener {
+            runBlocking {
+                RetrofitInstance.api.addFriend(FriendRequest(userVM.self_user?.email, arrayList[position].email))
+            }
+        }
+
+        arrayList[position].id.toString()
+        playerName.text = arrayList[position].name
+
         return view
     }
 }

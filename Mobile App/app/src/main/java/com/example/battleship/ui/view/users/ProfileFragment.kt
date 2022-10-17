@@ -31,13 +31,13 @@ class ProfileFragment : Fragment() {
 
         view.findViewById<TextView>(R.id.NameTextView).setText(userViewModel.self_user?.name)
         view.findViewById<TextView>(R.id.MailTextView).setText(userViewModel.self_user?.email)
-        view.findViewById<TextView>(R.id.FirstStatTextView).setText(userViewModel.self_user?.n_win_games.toString())
-        view.findViewById<TextView>(R.id.SecondStatTextView).setText(userViewModel.self_user?.n_lose_games.toString())
-        view.findViewById<TextView>(R.id.playedGamesTextView).setText(userViewModel.self_user?.n_played_games.toString())
-        view.findViewById<TextView>(R.id.FourthStatTextView).setText(userViewModel.self_user?.n_effectiveness.toString())
-        view.findViewById<TextView>(R.id.FifthStatTextView).setText(userViewModel.self_user?.n_bonifications.toString())
-        view.findViewById<TextView>(R.id.SixthStatTextView).setText(userViewModel.self_user?.turns_mean_of_games.toString())
-        view.findViewById<TextView>(R.id.SeventhStatTextView).setText(userViewModel.self_user?.mean_of_misses_by_game.toString())
+        view.findViewById<TextView>(R.id.FirstStatNumberTextView).setText(userViewModel.self_user?.n_win_games.toString())
+        view.findViewById<TextView>(R.id.SecondStatNumberTextView).setText(userViewModel.self_user?.n_lose_games.toString())
+        view.findViewById<TextView>(R.id.ThirdStatNumberTextView).setText(userViewModel.self_user?.n_played_games.toString())
+        view.findViewById<TextView>(R.id.FourthStatNumberTextView).setText(userViewModel.self_user?.n_effectiveness.toString())
+        view.findViewById<TextView>(R.id.FifthStatNumberTextView).setText(userViewModel.self_user?.n_bonifications.toString())
+        view.findViewById<TextView>(R.id.SixthStatNumberTextView).setText(userViewModel.self_user?.turns_mean_of_games.toString())
+        view.findViewById<TextView>(R.id.SeventhStatNumberTextView).setText(userViewModel.self_user?.mean_of_misses_by_game.toString())
 
         return view
     }
