@@ -1,9 +1,6 @@
 package com.example.battleship.data.api
 
-import com.example.battleship.data.models.Credential
-import com.example.battleship.data.models.FriendRequest
-import com.example.battleship.data.models.Player
-import com.example.battleship.data.models.PlayerRegister
+import com.example.battleship.data.models.*
 import retrofit2.Response
 import retrofit2.http.*
 
@@ -33,5 +30,8 @@ interface BattleShiApi {
 
     @POST("/friend_request/new")
     suspend fun addFriend(@Body friend_request : FriendRequest)
+
+    @POST("/friend_request/response")
+    suspend fun respondFriendRequest(@Body respond_friend_request: RespondFriendRequest)
 
 }
