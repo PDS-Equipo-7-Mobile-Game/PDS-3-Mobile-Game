@@ -12,13 +12,14 @@ import android.widget.TextView
 import androidx.lifecycle.ViewModel
 import com.example.battleship.R
 import com.example.battleship.data.api.RetrofitInstance
+import com.example.battleship.data.models.AddPlayerToRoom
 import com.example.battleship.data.models.Friend
 import com.example.battleship.data.models.FriendRequest
 import com.example.battleship.data.models.Player
 import com.example.battleship.ui.viewmodel.users.UserViewModel
 import kotlinx.coroutines.runBlocking
 
-class AddFriendsAdapter(private val context : Activity , private val arrayList : ArrayList<Player>, private val userVM : UserViewModel) : ArrayAdapter<Player>(context,
+class AddFriendsToLobbyAdapter(private val context : Activity , private val arrayList : ArrayList<Player>, private val userVM : UserViewModel) : ArrayAdapter<Player>(context,
     R.layout.friends_in_list, arrayList) {
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
@@ -34,9 +35,13 @@ class AddFriendsAdapter(private val context : Activity , private val arrayList :
 
         //imageView.setImageResource(arrayList[position].imageId)
         addFriend.setOnClickListener {
+            Log.d("agregando jugador", arrayList[position].name.toString())
             runBlocking {
-                RetrofitInstance.api.addFriend(FriendRequest(userVM.self_user?.email, arrayList[position].email))
+                RetrofitInstance.api.addPlayerToLobby(userVM.current_room!!.toInt(), arrayList[position].id!!.toInt())
+                var players_in_lobby = RetrofitInstance.api.getRoomPlayers(userVM.current_room!!.toInt())
+                userVM.players_in_lobby = players_in_lobby.body() as MutableList<Player>
             }
+            Log.d("Jugadores", userVM.players_in_lobby.toString())
         }
 
         arrayList[position].id.toString()

@@ -22,6 +22,7 @@ import com.example.battleship.data.api.RetrofitInstance
 import com.example.battleship.data.models.Credential
 import com.example.battleship.data.models.Friend
 import com.example.battleship.data.models.Player
+import com.example.battleship.data.models.Room
 import com.example.battleship.databinding.ActivityMainBinding
 import com.example.battleship.ui.viewmodel.users.UserViewModel
 import com.google.android.material.textfield.TextInputEditText
@@ -67,10 +68,25 @@ class UserLoginFragment : Fragment() {
 
                     //POST Players hay 3 status "accepted" cuando son amigos, "pending" cuando no ha aceptado a solicitud aun y "rejected".
                     var friends_request = RetrofitInstance.api.getFriends(userViewModel.self_user!!.id!!.toInt(), "accepted")
-                    Log.d("Friends", friends_request.body().toString())
                     userViewModel.friends = friends_request.body() as MutableList<Player>
                     var pending_friends = RetrofitInstance.api.getFriends(userViewModel.self_user!!.id!!.toInt(), "pending")
-                    userViewModel.pending_friends = pending_friends.body() as MutableList<Player>
+                    for (i in pending_friends.body()!!){
+                       if (i in userViewModel.friends){
+                           continue
+                       }
+                       else{
+                           if (i in userViewModel.pending_friends){
+                               continue
+                           }
+                           else{
+                               userViewModel.pending_friends.add(i)
+                           }
+                       }
+                    }
+
+                    var getlobby_request = RetrofitInstance.api.getLobbies(userViewModel.self_user!!.id!!.toInt(), "accepted")
+                    userViewModel.lobbies = getlobby_request.body() as MutableList<Room>
+
 //                    POST register
 //                    var response = RetrofitInstance.api.register(PlayerRegister("Matí Bustos", "mibustos2@miuandes.cl", "1234"))
 //                    Log.d("Create new user: ", response.body().toString())

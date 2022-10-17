@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#070808"
-    tools:context=".ui.view.users.AddFriendsFragment"
+    tools:context=".ui.view.users.AddFriendsToLobbyFragment"
     >
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -22,10 +22,10 @@
         </androidx.constraintlayout.widget.Guideline>
 
         <TextView
-            android:id="@+id/addFriendsTitle"
+            android:id="@+id/addFriendsToLobbyTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Agregar Amigos"
+            android:text="Agregar Amigos a la sala"
             android:textColor="@color/white"
             android:textSize="30dp"
             android:textStyle="bold"

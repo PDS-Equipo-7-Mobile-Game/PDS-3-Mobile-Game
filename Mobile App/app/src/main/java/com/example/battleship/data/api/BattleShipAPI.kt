@@ -39,4 +39,19 @@ interface BattleShiApi {
     @POST("/friend_request/response")
     suspend fun respondFriendRequest(@Body respond_friend_request: RespondFriendRequest)
 
+    @POST("/player/{player_id}/rooms")
+    suspend fun getLobbies(@Path("player_id") player_id: Int, @Query("status") status: String): Response<List<Room>>
+
+    @POST("player/new_game")
+    suspend fun createLobby(@Query("player_id") player_id : Int): Response<Room>
+
+    @GET("room/{room_id}/players")
+    suspend fun getRoomPlayers(@Path("room_id") room_id: Int): Response<List<Player>>
+
+    @POST("room/new_player")
+    suspend fun addPlayerToLobby(@Query("room_id") room_id: Int, @Query("player_id") player_id: Int): Response<Room>
+
+    @POST("room/{room_id}/response")
+    suspend fun respondInvitation(@Path("room_id") room_id: Int, @Query("player_id") player_id: Int, @Query("status") status: String)
+
 }

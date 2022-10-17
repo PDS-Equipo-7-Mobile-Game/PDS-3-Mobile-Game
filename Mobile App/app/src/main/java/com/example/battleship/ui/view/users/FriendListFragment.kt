@@ -39,7 +39,6 @@ class FriendListFragment : Fragment() {
         )
         */
         var view = inflater.inflate(R.layout.friends_in_list, container, false)
-        var button = view.findViewById<Button>(R.id.addButton)
         var addFriendButton = binding.root.findViewById<Button>(R.id.addfriend_button)
         var pendingButton = binding.root.findViewById<Button>(R.id.pendingButton)
 

@@ -7,6 +7,7 @@ import android.view.View
 import androidx.navigation.Navigation
 import com.example.battleship.databinding.ActivityMainBinding
 import com.example.battleship.ui.view.users.FriendListFragment
+import com.example.battleship.ui.view.users.LobbyListFragment
 import com.example.battleship.ui.view.users.ProfileFragment
 
 class MainActivity : AppCompatActivity() {
@@ -22,6 +23,7 @@ class MainActivity : AppCompatActivity() {
 
         val profileFragment = ProfileFragment()
         val friendListFragment = FriendListFragment()
+        val LobbyListFragment = LobbyListFragment()
 
         binding.bottomNavigationView.setOnNavigationItemReselectedListener {
 
@@ -29,7 +31,7 @@ class MainActivity : AppCompatActivity() {
 
                 R.id.friendsBottomNav -> supportFragmentManager.beginTransaction().replace(R.id.nav_host_fragment, friendListFragment).commit()
                 R.id.profileNavBar -> supportFragmentManager.beginTransaction().replace(R.id.nav_host_fragment, profileFragment ).commit()
-                R.id.playBottomNav -> supportFragmentManager.beginTransaction().replace(R.id.nav_host_fragment, profileFragment )
+                R.id.playBottomNav -> supportFragmentManager.beginTransaction().replace(R.id.nav_host_fragment, LobbyListFragment).commit()
             }
         }
 

@@ -27,7 +27,6 @@ class FriendListAdapter(private val context : Activity , private val arrayList :
 
         val imageView : ImageView = view.findViewById(R.id.profile_pic)
         val friendName : TextView = view.findViewById(R.id.friendName)
-        val addFriend : Button = view.findViewById(R.id.addButton)
 
         userVM.friendToShow = arrayList[position]
 
