@@ -6,11 +6,14 @@ import android.util.Log
 import android.util.Patterns
 import android.widget.Toast
 import androidx.lifecycle.AndroidViewModel
+import com.example.battleship.data.models.Friend
 import com.example.battleship.data.models.Player
 import kotlinx.coroutines.runBlocking
 
 class UserViewModel(application: Application): AndroidViewModel(application) {
     var friends = mutableListOf<Player>()
+    var pending_friends = mutableListOf<Player>()
+    var self_user : Player? = null
     var users: MutableList<Player> = mutableListOf<Player>()
 
     fun createUser(email: String, password: String, name: String){

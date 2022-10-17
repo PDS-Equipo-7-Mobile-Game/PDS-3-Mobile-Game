@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.example.battleship.ui.view.adapters.FriendListAdapter
@@ -42,14 +43,24 @@ class FriendListFragment : Fragment() {
         )
         */
 
+        var view = inflater.inflate(R.layout.friends_in_list, container, false)
+        var button = view.findViewById<Button>(R.id.addButton)
+
+
         friendArrayList = ArrayList()
 
         for ( i in userViewModel.friends){
+
+            button.visibility = View.INVISIBLE
 
             val friend = Player(i.name, i.email, i.auth_key, i.n_win_games, i.n_lose_games, i.n_played_games,
                                 i.n_bonifications, i.n_effectiveness, i.turns_mean_of_games, i.mean_of_misses_by_game)
             friendArrayList.add(friend)
 
+        }
+
+        for (i in userViewModel.pending_friends){
+            button.visibility = View.INVISIBLE
         }
 
         binding.friendlistview.isClickable = true

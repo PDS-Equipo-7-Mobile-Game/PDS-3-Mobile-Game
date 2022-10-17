@@ -13,9 +13,6 @@
             android:id="@+id/action_userLoginFragment_to_createNewAccountFragment"
             app:destination="@id/createNewAccountFragment" />
         <action
-            android:id="@+id/action_userLoginFragment_to_FriendListFragment"
-            app:destination="@id/FriendListFragment" />
-        <action
             android:id="@+id/action_userLoginFragment_to_profileFragment"
             app:destination="@id/profileFragment" />
     </fragment>
@@ -32,11 +29,7 @@
         android:id="@+id/FriendListFragment"
         android:name="com.example.battleship.ui.view.users.FriendListFragment"
         android:label="fragment_user_profile"
-        tools:layout="@layout/fragment_friend_list" >
-        <action
-            android:id="@+id/action_FriendListFragment_to_userLoginFragment"
-            app:destination="@id/userLoginFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_friend_list" />
     <fragment
         android:id="@+id/profileFragment"
         android:name="com.example.battleship.ui.view.users.ProfileFragment"

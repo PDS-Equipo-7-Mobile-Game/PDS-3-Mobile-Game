@@ -69,6 +69,13 @@ class UserLoginFragment : Fragment() {
                     Log.d("Friends", friends_request.body().toString())
                     userViewModel.friends = friends_request.body() as MutableList<Player>
 
+                    var pending_friends = RetrofitInstance.api.getFriends(2, "pending")
+
+                    for (i in pending_friends.body()!!){
+                        userViewModel.pending_friends.add(i)
+                    }
+
+                    userViewModel.self_user = response.body()
 //                    POST register
 //                    var response = RetrofitInstance.api.register(PlayerRegister("Matí Bustos", "mibustos2@miuandes.cl", "1234"))
 //                    Log.d("Create new user: ", response.body().toString())
@@ -77,7 +84,7 @@ class UserLoginFragment : Fragment() {
 //                    var response_players = RetrofitInstance.api.getPlayers().body().toString()
 //                    Log.d("Players:", response_players)
 
-                    Navigation.findNavController(it).navigate(R.id.action_userLoginFragment_to_FriendListFragment)
+                    Navigation.findNavController(it).navigate(R.id.action_userLoginFragment_to_profileFragment)
 
 
                 }
