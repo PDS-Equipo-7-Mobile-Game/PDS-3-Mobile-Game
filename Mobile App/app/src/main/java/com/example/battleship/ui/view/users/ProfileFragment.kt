@@ -1,6 +1,7 @@
 package com.example.battleship.ui.view.users
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -9,6 +10,7 @@ import android.widget.TextView
 import androidx.fragment.app.activityViewModels
 import com.example.battleship.R
 import com.example.battleship.ui.viewmodel.users.UserViewModel
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class ProfileFragment : Fragment() {
 
@@ -18,6 +20,12 @@ class ProfileFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
+        var bottom_nav = requireActivity().findViewById<BottomNavigationView>(R.id.bottomNavigationView)
+        Log.d("Is null? : ", bottom_nav.toString())
+        Log.d("Is null? : ", bottom_nav.visibility.toString())
+        bottom_nav.visibility = View.VISIBLE
+
         // Inflate the layout for this fragment
         var view = inflater.inflate(R.layout.fragment_profile, container, false)
 

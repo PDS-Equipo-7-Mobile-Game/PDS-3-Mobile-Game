@@ -29,11 +29,6 @@ class FriendListFragment : Fragment() {
     ): View? {
         binding = FragmentFriendListBinding.inflate(layoutInflater)
 
-        var bottom_nav = requireActivity().findViewById<BottomNavigationView>(R.id.bottomNavigationView)
-        Log.d("Is null? : ", bottom_nav.toString())
-        Log.d("Is null? : ", bottom_nav.visibility.toString())
-        bottom_nav.visibility = View.VISIBLE
-
         val context = context as MainActivity
         /*
         val imageId = intArrayOf(
