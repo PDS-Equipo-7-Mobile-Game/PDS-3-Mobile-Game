@@ -51,4 +51,9 @@
         android:id="@+id/showFriendProfileFragment"
         android:name="com.example.battleship.ui.view.users.ShowFriendProfileFragment"
         android:label="ShowFriendProfileFragment" />
+    <fragment
+        android:id="@+id/gameFragment"
+        android:name="com.example.battleship.ui.view.game.GameFragment"
+        android:label="fragment_game"
+        tools:layout="@layout/fragment_game" />
 </navigation>
