@@ -32,6 +32,8 @@ class BoardFragment : Fragment() {
         for (i in 0 until constraintLayout.childCount){
             v = constraintLayout.getChildAt(i)
 
+
+
 //            var button = v as Button
 //            button.setBackgroundColor(Color.RED)
 
