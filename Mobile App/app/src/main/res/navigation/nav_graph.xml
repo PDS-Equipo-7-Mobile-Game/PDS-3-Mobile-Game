@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/userLoginFragment">
+    app:startDestination="@id/boardFragment">
     <fragment
         android:id="@+id/userLoginFragment"
         android:name="com.example.battleship.ui.view.users.UserLoginFragment"
@@ -56,4 +56,9 @@
         android:name="com.example.battleship.ui.view.game.GameFragment"
         android:label="fragment_game"
         tools:layout="@layout/fragment_game" />
+    <fragment
+        android:id="@+id/boardFragment"
+        android:name="com.example.battleship.ui.view.game.BoardFragment"
+        android:label="fragment_board"
+        tools:layout="@layout/fragment_board" />
 </navigation>
