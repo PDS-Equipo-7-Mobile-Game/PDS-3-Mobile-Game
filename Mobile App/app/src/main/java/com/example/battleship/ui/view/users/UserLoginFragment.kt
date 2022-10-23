@@ -63,6 +63,8 @@ class UserLoginFragment : Fragment() {
 
                 if (response.body()?.email?.isNotEmpty() == true){ //LogIn OK
                     Log.d("Logged In", true.toString())
+                    Log.d("Logged In", response.toString())
+
                     Log.d("RESPONSE:", response.body().toString())
                     userViewModel.self_user = response.body()
 
