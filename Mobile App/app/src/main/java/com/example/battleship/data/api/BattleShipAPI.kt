@@ -42,7 +42,7 @@ interface BattleShiApi {
     @POST("/player/{player_id}/rooms")
     suspend fun getLobbies(@Path("player_id") player_id: Int, @Query("status") status: String): Response<List<Room>>
 
-    @POST("player/new_game")
+    @POST("player/new_room")
     suspend fun createLobby(@Query("player_id") player_id : Int): Response<Room>
 
     @GET("room/{room_id}/players")
