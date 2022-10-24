@@ -57,5 +57,6 @@ interface BattleShiApi {
     @POST("new_game")
     suspend fun startGame(@Query("room_id") room_id: Int): Response<Unit>
 
-
+    @POST("get_board_state")
+    suspend fun getBoardState(@Query("room_id") room_id: Int, @Query("player_id") player_id: Int): Response<CoordOfPlayer>
 }
