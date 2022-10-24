@@ -42,7 +42,10 @@ class BoardFragmentTwo : Fragment() {
 
         var response: CoordOfPlayer?
         var current_player_turn: String?
+
         runBlocking {
+
+
             response = RetrofitInstance.api.getBoardState(userViewModel.current_room!!, userViewModel.self_user!!.id!!.toInt()).body()
             current_player_turn = RetrofitInstance.api.getCurrentPlayerTurn(userViewModel.current_room!!).body()!!.player
             view.findViewById<TextView>(R.id.playerTextPH).text = current_player_turn
@@ -72,16 +75,27 @@ class BoardFragmentTwo : Fragment() {
                         b.setBackgroundColor(requireContext().getColor(R.color.red))
                     }
                 }
+
+                var post_turn_resp: PostTurnResponse? = null
+
+
                 b.setOnClickListener {
-                    var post_turn_resp: PostTurnResponse
+
                     runBlocking {
-                        post_turn_resp = RetrofitInstance.api.postNewTurn(userViewModel.current_room!!, x, y, userViewModel.self_user!!.id!!.toInt()).body()!!
+
+                        Log.d("CurrentRoom: ", userViewModel.current_room.toString())
+                        Log.d("X: ", x.toString())
+                        Log.d("y: ", y.toString())
+                        Log.d("Player_id: ", userViewModel.self_user!!.id.toString())
+
+                        post_turn_resp = RetrofitInstance.api.postNewTurn(userViewModel.current_room!!, x, y, userViewModel.self_user!!.id!!.toInt()).body()
+                        Log.d("POSTTURN: ", post_turn_resp.toString())
 
                     }
 
                     Toast.makeText(
                         activity,
-                        "${post_turn_resp!!.message}",
+                        "${post_turn_resp?.message.toString()}",
                         Toast.LENGTH_SHORT
                     ).show()
                 }

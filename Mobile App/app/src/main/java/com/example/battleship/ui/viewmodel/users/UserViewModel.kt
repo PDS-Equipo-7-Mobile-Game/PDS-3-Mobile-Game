@@ -10,6 +10,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.battleship.data.api.RetrofitInstance
 import com.example.battleship.data.models.Friend
 import com.example.battleship.data.models.Player
+import com.example.battleship.data.models.PostTurnResponse
 import com.example.battleship.data.models.Room
 import kotlinx.coroutines.ensureActive
 import kotlinx.coroutines.launch
@@ -40,12 +41,11 @@ class UserViewModel(application: Application): AndroidViewModel(application) {
         return password.length >= 6
     }
 
-    fun postNewTurn(x:Int, y:Int): String{
-
-//        viewModelScope.launch {
+//    fun postNewTurn(x:Int, y:Int): String{
+//        var post_turn_resp: PostTurnResponse? = null
+//        runBlocking {
 //            var post_turn_resp = RetrofitInstance.api.postNewTurn(current_room!!, x, y, self_user!!.id!!.toInt()).body()!!
-//            return post_turn_resp
 //        }
-        return ""
-    }
+//        return post_turn_resp!!.message
+//    }
 }
