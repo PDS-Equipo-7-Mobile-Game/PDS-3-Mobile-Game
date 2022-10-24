@@ -8,10 +8,7 @@ import android.widget.Toast
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.battleship.data.api.RetrofitInstance
-import com.example.battleship.data.models.Friend
-import com.example.battleship.data.models.Player
-import com.example.battleship.data.models.PostTurnResponse
-import com.example.battleship.data.models.Room
+import com.example.battleship.data.models.*
 import kotlinx.coroutines.ensureActive
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
@@ -39,6 +36,23 @@ class UserViewModel(application: Application): AndroidViewModel(application) {
         Log.d("Pass:", password)
         Log.d("Size pass: ", password.length.toString())
         return password.length >= 6
+    }
+
+
+    fun getBoardState(): CoordOfPlayer?{
+        var response:CoordOfPlayer? = null
+        runBlocking {
+            response =  RetrofitInstance.api.getBoardState(current_room!!, self_user!!.id!!.toInt()).body()
+        }
+        return response
+    }
+
+    fun getCurrentPlayerTurn(): String?{
+        var response: String? = null
+        runBlocking{
+            response = RetrofitInstance.api.getCurrentPlayerTurn(current_room!!).body()?.player
+        }
+        return response
     }
 
 //    fun postNewTurn(x:Int, y:Int): String{

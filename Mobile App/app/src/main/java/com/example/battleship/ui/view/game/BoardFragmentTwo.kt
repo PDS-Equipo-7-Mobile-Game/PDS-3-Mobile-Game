@@ -34,7 +34,6 @@ class BoardFragmentTwo : Fragment() {
 
         var table = view.findViewById<TableLayout>(R.id.gameTable)
 
-        var v: View? = null
         // Populate the table with stuff
 
 
@@ -103,29 +102,57 @@ class BoardFragmentTwo : Fragment() {
             }
         }
 
-//        val t = Timer()
-//        t.scheduleAtFixedRate(
-//            object : TimerTask() {
-//                override fun run() {
-//                    //Called each time when 1000 milliseconds (1 second) (the period parameter)
-//                }
-//            },  //Set how long before to start calling the TimerTask (in milliseconds)
-//            0,  //Set the amount of time between each execution (in milliseconds)
-//            5000
-//        )
+        val t = Timer()
+        t.scheduleAtFixedRate(
+            object : TimerTask() {
+                override fun run() {
+                    var v: View? = null
 
-//        for (i in 0 until table.childCount){
-//            v = table.getChildAt(i) as TableRow
-//
-//            for (x in 0 until v.childCount){
-//                var item = v.getChildAt(x)
-//                Log.d("Coordenadas de Boton: ", item.getTag().toString())
-//            }
-//
-////            var button = v as Button
-////            button.setBackgroundColor(Color.RED)
-//
-//        }
+                    var getboardState: CoordOfPlayer?
+                    getboardState = userViewModel.getBoardState()
+                    var getCurrentPlayer: String?
+                    getCurrentPlayer = userViewModel.getCurrentPlayerTurn()
+                    activity?.runOnUiThread {
+                        view.findViewById<TextView>(R.id.playerTextPH).text = getCurrentPlayer
+                        Log.d("CURRENTPLAYER", getCurrentPlayer.toString())
+                    }
+
+                    for (i in 0 until table.childCount){
+                        v = table.getChildAt(i) as TableRow
+
+                        for (x in 0 until v.childCount){
+                            var item = v.getChildAt(x) as Button
+
+                            var tag = item.getTag() as String
+                            var coord: List<String>
+                            coord = tag.split(",")
+
+                            getboardState?.alive?.forEach {
+                                if (coord[0] == it.x.toString() && coord[1] == it.y.toString()){
+                                    item.setBackgroundColor(requireContext().getColor(R.color.green))
+                                }
+                            }
+                            getboardState?.dead?.forEach {
+                                if (coord[0] == it.x.toString() && coord[1] == it.y.toString()){
+                                    item.setBackgroundColor(requireContext().getColor(R.color.red))
+                                }
+                            }
+
+                            Log.d("Coordenadas de Boton: ", item.getTag().toString())
+                        }
+
+//            var button = v as Button
+//            button.setBackgroundColor(Color.RED)
+
+                    }
+
+                }
+            },  //Set how long before to start calling the TimerTask (in milliseconds)
+            0,  //Set the amount of time between each execution (in milliseconds)
+            5000
+        )
+
+
 
         return view
     }
