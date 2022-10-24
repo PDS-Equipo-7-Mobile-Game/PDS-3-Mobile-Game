@@ -11,6 +11,7 @@ import androidx.fragment.app.activityViewModels
 import com.example.battleship.R
 import com.example.battleship.data.api.RetrofitInstance
 import com.example.battleship.data.models.CoordOfPlayer
+import com.example.battleship.data.models.PostTurnResponse
 import com.example.battleship.ui.viewmodel.users.UserViewModel
 import kotlinx.coroutines.runBlocking
 import java.util.*
@@ -72,9 +73,15 @@ class BoardFragmentTwo : Fragment() {
                     }
                 }
                 b.setOnClickListener {
+                    var post_turn_resp: PostTurnResponse
+                    runBlocking {
+                        post_turn_resp = RetrofitInstance.api.postNewTurn(userViewModel.current_room!!, x, y, userViewModel.self_user!!.id!!.toInt()).body()!!
+
+                    }
+
                     Toast.makeText(
                         activity,
-                        "You clicked ($y,$x)",
+                        "${post_turn_resp!!.message}",
                         Toast.LENGTH_SHORT
                     ).show()
                 }
@@ -90,7 +97,7 @@ class BoardFragmentTwo : Fragment() {
 //                }
 //            },  //Set how long before to start calling the TimerTask (in milliseconds)
 //            0,  //Set the amount of time between each execution (in milliseconds)
-//            1000
+//            5000
 //        )
 
 //        for (i in 0 until table.childCount){
