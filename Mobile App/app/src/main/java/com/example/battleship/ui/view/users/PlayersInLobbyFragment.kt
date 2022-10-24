@@ -19,6 +19,7 @@ import com.example.battleship.databinding.FragmentFriendListBinding
 import com.example.battleship.databinding.FragmentLobbyBinding
 import com.example.battleship.ui.view.adapters.PlayersInLobbyAdapter
 import com.example.battleship.ui.view.game.BoardFragment
+import com.example.battleship.ui.view.game.BoardFragmentTwo
 import com.example.battleship.ui.viewmodel.users.UserViewModel
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.coroutines.runBlocking
@@ -57,7 +58,7 @@ class PlayersInLobbyFragment : Fragment() {
                 Log.d("Id sala: ", userViewModel.current_room!!.toString())
                 RetrofitInstance.api.startGame(userViewModel.current_room!!.toInt())
             }
-            requireActivity().supportFragmentManager.beginTransaction().replace(R.id.nav_host_fragment, BoardFragment()).commit()
+            requireActivity().supportFragmentManager.beginTransaction().replace(R.id.nav_host_fragment, BoardFragmentTwo()).commit()
         }
 
         playerArrayList = ArrayList()
