@@ -59,4 +59,7 @@ interface BattleShiApi {
 
     @POST("get_board_state")
     suspend fun getBoardState(@Query("room_id") room_id: Int, @Query("player_id") player_id: Int): Response<CoordOfPlayer>
+
+    @GET("room/{room_id}/game/current_player_turn")
+    suspend fun getCurrentPlayerTurn(@Path("room_id") room_id: Int): Response<CurrentPlayer>
 }
