@@ -112,6 +112,8 @@ class BoardFragmentTwo : Fragment() {
                     getboardState = userViewModel.getBoardState()
                     var getCurrentPlayer: String?
                     getCurrentPlayer = userViewModel.getCurrentPlayerTurn()
+                    var getCurrentGameState: String?
+                    getCurrentGameState = userViewModel.getCurrentGameState()
                     activity?.runOnUiThread {
                         view.findViewById<TextView>(R.id.playerTextPH).text = getCurrentPlayer
                         Log.d("CURRENTPLAYER", getCurrentPlayer.toString())

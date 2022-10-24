@@ -55,6 +55,14 @@ class UserViewModel(application: Application): AndroidViewModel(application) {
         return response
     }
 
+    fun getCurrentGameState(): String?{
+        var game_state: String? = null
+        runBlocking{
+            game_state = RetrofitInstance.api.getGameState(current_room!!).body()!!.state
+        }
+        return game_state
+    }
+
 //    fun postNewTurn(x:Int, y:Int): String{
 //        var post_turn_resp: PostTurnResponse? = null
 //        runBlocking {

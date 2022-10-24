@@ -65,4 +65,7 @@ interface BattleShiApi {
 
     @POST("room/{room_id}/game/turn")
     suspend fun postNewTurn(@Path("room_id") room_id: Int, @Query("x_cord") x_cord: Int, @Query("y_cord") y_cord: Int, @Query("player_id") player_id: Int ): Response<PostTurnResponse>
+
+    @GET("room/{room_id}/game_state")
+    suspend fun getGameState(@Path("room_id") room_id: Int): Response<GameState>
 }
