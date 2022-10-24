@@ -12,11 +12,13 @@ import androidx.navigation.Navigation
 import com.example.battleship.ui.view.adapters.FriendListAdapter
 import com.example.battleship.MainActivity
 import com.example.battleship.R
+import com.example.battleship.data.api.RetrofitInstance
 import com.example.battleship.data.models.Friend
 import com.example.battleship.data.models.Player
 import com.example.battleship.databinding.FragmentFriendListBinding
 import com.example.battleship.ui.viewmodel.users.UserViewModel
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import kotlinx.coroutines.runBlocking
 
 class FriendListFragment : Fragment() {
 

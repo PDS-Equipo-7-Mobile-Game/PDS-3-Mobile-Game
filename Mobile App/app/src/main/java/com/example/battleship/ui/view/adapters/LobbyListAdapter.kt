@@ -29,8 +29,12 @@ class LobbyListAdapter(private val context : Activity , private val arrayList : 
         val inflater : LayoutInflater = LayoutInflater.from(context)
         val view : View = inflater.inflate(R.layout.lobbies_in_list, null)
 
-
         val lobbyName : TextView = view.findViewById(R.id.lobbyName)
+        val lobbyState : TextView = view.findViewById(R.id.gameStarted)
+
+        if (arrayList[position].state != "in game"){
+            lobbyState.visibility = View.INVISIBLE
+        }
 
         lobbyName.setOnClickListener {
             runBlocking {

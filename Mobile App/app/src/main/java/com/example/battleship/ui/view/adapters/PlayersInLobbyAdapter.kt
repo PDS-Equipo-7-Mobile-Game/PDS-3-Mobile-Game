@@ -26,7 +26,6 @@ class PlayersInLobbyAdapter(private val context : Activity , private val arrayLi
 
         val playerinlobbyName : TextView = view.findViewById(R.id.playerinlobbyName)
 
-
         //imageView.setImageResource(arrayList[position].imageId)
         playerinlobbyName.text = arrayList[position].name
         return view

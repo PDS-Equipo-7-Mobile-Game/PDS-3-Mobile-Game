@@ -32,7 +32,7 @@ class PendingFriendsAdapter(private val context : Activity , private val arrayLi
         acceptReq.setOnClickListener {
             Log.d("Accept Button: ", "Apretado")
             runBlocking {
-                RetrofitInstance.api.respondFriendRequest(RespondFriendRequest("accepted", arrayList[position].id))
+                RetrofitInstance.api.respondFriendRequest("accepted", arrayList[position].id!!.toInt())
                 var friends_request = RetrofitInstance.api.getFriends(userVM.self_user!!.id!!.toInt(), "accepted")
                 userVM.friends = friends_request.body() as MutableList<Player>
                 var pending_request = RetrofitInstance.api.getFriends(userVM.self_user!!.id!!.toInt(), "pending")
@@ -42,7 +42,7 @@ class PendingFriendsAdapter(private val context : Activity , private val arrayLi
 
         denyReq.setOnClickListener {
             runBlocking {
-                RetrofitInstance.api.respondFriendRequest(RespondFriendRequest("rejected", arrayList[position].id))
+                RetrofitInstance.api.respondFriendRequest("rejected", arrayList[position].id!!.toInt())
                 var pending_request = RetrofitInstance.api.getFriends(userVM.self_user!!.id!!.toInt(), "pending")
                 userVM.pending_friends = pending_request.body() as MutableList<Player>
             }

@@ -89,6 +89,10 @@ class UserLoginFragment : Fragment() {
                     var getlobby_request = RetrofitInstance.api.getLobbies(userViewModel.self_user!!.id!!.toInt(), "accepted")
                     userViewModel.lobbies = getlobby_request.body() as MutableList<Room>
 
+                    var getstartedgames = RetrofitInstance.api.getLobbies(userViewModel.self_user!!.id!!.toInt(), "in game")
+                    for (i in getstartedgames.body()!!){
+                        userViewModel.lobbies.add(i)
+                    }
 //                    POST register
 //                    var response = RetrofitInstance.api.register(PlayerRegister("Matí Bustos", "mibustos2@miuandes.cl", "1234"))
 //                    Log.d("Create new user: ", response.body().toString())

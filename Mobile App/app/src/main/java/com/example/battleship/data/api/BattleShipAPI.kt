@@ -37,7 +37,7 @@ interface BattleShiApi {
     suspend fun addFriend(@Body friend_request : FriendRequest)
 
     @POST("/friend_request/response")
-    suspend fun respondFriendRequest(@Body respond_friend_request: RespondFriendRequest)
+    suspend fun respondFriendRequest(@Query("status") status: String, @Query("friend_request_id") friend_request_id: Int)
 
     @POST("/player/{player_id}/rooms")
     suspend fun getLobbies(@Path("player_id") player_id: Int, @Query("status") status: String): Response<List<Room>>
@@ -54,4 +54,6 @@ interface BattleShiApi {
     @POST("room/{room_id}/response")
     suspend fun respondInvitation(@Path("room_id") room_id: Int, @Query("player_id") player_id: Int, @Query("status") status: String)
 
+    @POST("new_game/")
+    suspend fun startGame(@Query("room_id") room_id: Int)
 }

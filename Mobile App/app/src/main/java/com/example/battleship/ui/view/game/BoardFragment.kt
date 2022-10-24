@@ -11,7 +11,6 @@ import android.widget.Button
 import android.widget.LinearLayout
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
-import androidx.gridlayout.widget.GridLayout
 import com.example.battleship.R
 
 class BoardFragment : Fragment() {
