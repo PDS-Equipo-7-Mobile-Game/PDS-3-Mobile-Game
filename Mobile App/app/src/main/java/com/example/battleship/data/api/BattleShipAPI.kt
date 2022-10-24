@@ -54,6 +54,8 @@ interface BattleShiApi {
     @POST("room/{room_id}/response")
     suspend fun respondInvitation(@Path("room_id") room_id: Int, @Query("player_id") player_id: Int, @Query("status") status: String)
 
-    @POST("new_game/")
-    suspend fun startGame(@Query("room_id") room_id: Int)
+    @POST("new_game")
+    suspend fun startGame(@Query("room_id") room_id: Int): Response<Unit>
+
+
 }

@@ -28,8 +28,18 @@ class BoardFragment : Fragment() {
 
         var v: View? = null
 
+        var column_index = 0
+        var row_index = 0
+        var global_counter = 0
+
         for (i in 0 until constraintLayout.childCount){
             v = constraintLayout.getChildAt(i)
+
+            if (global_counter%8 == 0){
+                row_index += 1
+            }
+
+            global_counter += 1
 
 //            var button = v as Button
 //            button.setBackgroundColor(Color.RED)

@@ -34,11 +34,12 @@
                 app:strokeWidth="3dp" />
 
             <Button
-                android:id="@+id/btn_9"
+                android:id="@+id/btn_10"
                 style="@style/TextAppearance.AppCompat.Widget.Button.Borderless.Colored"
                 android:layout_width="@dimen/board_button_size"
 
                 android:layout_height="@dimen/board_button_size"
+                android:layout_marginStart="40dp"
                 android:layout_marginTop="28dp"
                 android:textColor="@color/design_default_color_primary"
                 app:backgroundTint="@color/casilla"
@@ -48,12 +49,11 @@
                 app:strokeWidth="3dp" />
 
             <Button
-                android:id="@+id/btn_10"
+                android:id="@+id/btn_9"
                 style="@style/TextAppearance.AppCompat.Widget.Button.Borderless.Colored"
                 android:layout_width="@dimen/board_button_size"
 
                 android:layout_height="@dimen/board_button_size"
-                android:layout_marginStart="40dp"
                 android:layout_marginTop="28dp"
                 android:textColor="@color/design_default_color_primary"
                 app:backgroundTint="@color/casilla"
